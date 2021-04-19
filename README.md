@@ -1,7 +1,51 @@
 # Pancakeswap Vertex
 
+
+### Example Queries 
+Each of the queries enables a set of views for the entity, with a larger DApp specific view to represent the state of the ecosystem. These views are constructed through a generalized set of query views. 
+
+- Query for Ecosystem
+
+```graphql
+pancake {
+volume
+transactions
+...
+}
+
+```
+
+- Top 100 Tokens 
+
+```graphql
+tokens(descending: true, orderBy: "volume", first: 100) {
+...
+}
+```
+
+- Top 100 Pairs with BNB as Base
+```graphql
+pairs(where: {name: "baseAsset", exp: "=", value: "BNB"}, descending: true, orderBy: "volume", first: 100) {
+...
+}
+
+```
+
+
 ## Queries 
-- tokens(where: {name: "name", exp: "=", value: "BNB"})
+
+Each entity can be queried through the use of individual ID queries, and from a generalized query. 
+
+
+```graphql
+tokens(where: {name: "name", exp: "=", value: "BNB"}, descending: boolean, orderBy: string, first: int, last: int,  limit: int) {
+ [Tokens]
+}
+
+token(id string) {
+Token
+}
+```
 
 ## Entities 
 
